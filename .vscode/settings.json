@@ -1,0 +1,5 @@
+{
+    "editor.defaultFormatter": "vscode.python",
+    "debug.allowBreakpointsEverywhere": true,
+    "python.pythonPath": "graph-env/bin/python3"
+}
