@@ -3,7 +3,7 @@ import graphene
 from graphene.relay import Node
 from graphene_mongo import MongoengineConnectionField, MongoengineObjectType
 from models import Department as DepartmentModel
-from models import Employee as EmployeeModel
+from models import Person as PersonModel
 from models import Role as RoleModel
 
 class Department(MongoengineObjectType):
@@ -19,22 +19,29 @@ class Role(MongoengineObjectType):
         interfaces = (Node,)
 
 
-class Employee(MongoengineObjectType):
+class Person(MongoengineObjectType):
 
     class Meta:
-        model = EmployeeModel
+        model = PersonModel
         interfaces = (Node,)
-
 
 class Query(graphene.ObjectType):
     node = Node.Field()
-    all_employees = MongoengineConnectionField(Employee)
+    all_people = MongoengineConnectionField(Person)
     all_role = MongoengineConnectionField(Role)
     role = graphene.Field(Role)
+
+
+    #*: Declaring and resolving the "hello field"
+    hello = graphene.String(name=graphene.String(default_value="you!"))
+    def resolve_hello(root, info, name):
+        return f'Hello {name}'
+
+
 
 #TODO: Define some resolve functions for testing
 # ?: I have a question
 # !: Be careful about this!
 # *: Remember about this
 
-schema = graphene.Schema(query=Query, types=[Department, Employee, Role])
+schema = graphene.Schema(query=Query, types=[Department, Person, Role])

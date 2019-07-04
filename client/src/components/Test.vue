@@ -76,7 +76,7 @@ export default {
       axios.get(path, {
         params: {
           query: `{
-                    allEmployees {
+                    allPeople {
                         edges {
                             node {
                                 name

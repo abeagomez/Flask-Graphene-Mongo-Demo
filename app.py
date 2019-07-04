@@ -2,6 +2,8 @@
 from flask import Flask, render_template
 from flask_cors import CORS
 from flask import jsonify
+from flask import request
+import json
 
 from database import init_db
 from flask_graphql import GraphQLView
@@ -14,7 +16,7 @@ app.debug = True
 CORS(app, resources={r'/*': {'origin':'*'}})
 # default_query = '''
 # {
-#   allEmployees {
+#   allPeople {
 #     edges {
 #       node {
 #         id,
@@ -46,7 +48,6 @@ def view():
 @app.route('/ping', methods=['GET'])
 def ping_pong():
     return 'pong!'
-
 
 @app.route('/books', methods=['GET'])
 def all_books():

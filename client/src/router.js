@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Ping from './components/Ping.vue';
 import Books from './components/Books.vue';
 import Test from './components/Test.vue';
+import GraphTest from './components/GraphTest.vue';
 
 Vue.use(Router);
 
@@ -24,6 +25,11 @@ export default new Router({
       path: '/test',
       name: 'Test',
       component: Test,
+    },
+    {
+      path: '/graph',
+      name: 'GraphTest',
+      component: GraphTest,
     },
   ],
 });

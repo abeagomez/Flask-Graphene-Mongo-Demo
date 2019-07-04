@@ -1,7 +1,7 @@
 # flask_graphene_mongo/database.py
 from mongoengine import connect
 
-from models import Department, Employee, Role
+from models import Department, Person, Role
 
 connect('test')
 
@@ -20,11 +20,11 @@ def init_db():
     engineer = Role(name='engineer')
     engineer.save()
 
-    peter = Employee(name='Peter', department=engineering, role=engineer)
+    peter = Person(first_name='Peter', last_name='Parker', department=engineering, role=engineer)
     peter.save()
 
-    roy = Employee(name='Roy', department=engineering, role=engineer)
+    roy = Person(first_name='Roy', last_name='Royce', department=engineering, role=engineer)
     roy.save()
 
-    tracy = Employee(name='Tracy', department=hr, role=manager)
+    tracy = Person(first_name='Tracy', last_name='Monita', department=hr, role=manager)
     tracy.save()
